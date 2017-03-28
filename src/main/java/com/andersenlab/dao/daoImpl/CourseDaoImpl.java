@@ -6,6 +6,9 @@ import com.andersenlab.util.HibernateUtil;
 import org.hibernate.Session;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * DAO for table course in database
@@ -74,5 +77,19 @@ public class CourseDaoImpl implements CourseDao {
             if (session != null) session.close();
         }
         return result;
+    }
+
+    public List<Course> getCouses() throws SQLException {
+        List<Course> courses = new ArrayList<Course>();
+        Session session = null;
+        try {
+            session = HibernateUtil.getSessionFactory().openSession();
+            courses = session.createCriteria(Course.class).list();
+        } catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            if (session != null) session.close();
+        }
+        return courses;
     }
 }
