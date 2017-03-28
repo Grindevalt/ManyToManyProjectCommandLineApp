@@ -3,6 +3,8 @@ package com.andersenlab.dao;
 import com.andersenlab.entities.Course;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Interface for creating data access object for course entity
@@ -35,4 +37,11 @@ public interface CourseDao {
      * @throws SQLException
      */
     public Course getCourse(long id) throws SQLException;
+
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
+    public List<Course> getCouses() throws SQLException;
 }
