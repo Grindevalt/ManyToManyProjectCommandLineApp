@@ -1,7 +1,9 @@
 package com.andersenlab.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -23,7 +25,7 @@ public class Course {
     private String courseName;
 
     @ManyToMany(mappedBy = "courses")
-    private Set<Student> students = new HashSet<Student>();
+    private List<Student> students = new ArrayList<Student>();
 
     public Course() {
     }
@@ -37,7 +39,7 @@ public class Course {
      *
      * @return Set of students
      */
-    public Set<Student> getStudents() {
+    public List<Student> getStudents() {
         return students;
     }
 
@@ -46,7 +48,7 @@ public class Course {
      *
      * @param students
      */
-    public void setStudents(Set<Student> students) {
+    public void setStudents(List<Student> students) {
         this.students = students;
     }
 
@@ -127,7 +129,6 @@ public class Course {
         return "Course{" +
                 "courseId=" + courseId +
                 ", courseName='" + courseName + '\'' +
-                ", students=" + students +
                 '}';
     }
 }
